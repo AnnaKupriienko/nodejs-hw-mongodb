@@ -25,5 +25,7 @@ const contactsShema = new Schema({
 },
     {
         timestamps: true,
-    },);
-export const ContactsCollection = model('contact', contactsShema);
+    },
+);
+
+export const contactsCollection = model('contacts', contactsShema);
