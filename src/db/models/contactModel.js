@@ -27,5 +27,10 @@ const contactsShema = new Schema({
     timestamps: true,
     },
 );
+contactsShema.pre('findOneAndUpdate', function (next) {
+    this.options.new = true,
+    this.options.runValidators = true;
+    next();
+});
 
 export const contactsCollection = model('contacts', contactsShema);
