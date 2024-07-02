@@ -1,8 +1,9 @@
 import { typeList } from "../constants/contact-constants.js";
 const parseBoolean = (value) => {
     if (typeof value !== "string") return;
-    if (!["true", "false"].includes(value)) return;
-    return value === "true";
+    if (value === "true") return true;
+    if (value === "false") return false;
+    return;
 };
 const parseType = (type) => {
   const isString = typeof type === 'string';
