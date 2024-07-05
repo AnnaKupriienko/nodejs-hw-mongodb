@@ -1,10 +1,17 @@
-import { registerUser } from "../services/contacts.js";
+import { registerUser } from "../services/auth.js";
+import createHttpError from 'http-errors';
 
 export const registerUserController = async (req, res) => {
-    const user = await registerUser(req.body);
+    // const { email } = req.body;
+    const newUser = await registerUser(req.body);
+    const data = {
+        name: newUser.name,
+        email: newUser.email,
+    };
+   
     res.status(201).json({
         status: 201,
-        message: "Successfully created a user!",
-        data: user,
+        message: "Successfully registered a user!",
+        data: data,
     })
-}
+};
