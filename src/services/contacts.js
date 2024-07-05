@@ -1,5 +1,6 @@
 import { contactsCollection } from "../db/models/contactModel.js"
 import { calculatePaginationData } from "../utils/calculatePaginationData.js";
+import {UsersCollection} from "../db/models/userModel.js"
 
 export const getAllContacts = async ({ filter,page, perPage,sortBy ="name", sortOrder ="asc" }) => {
   const skip = (page - 1) * perPage;
@@ -42,4 +43,7 @@ export const updateContact = async (contactId, payload) => {
 export const deleteContact = async (contactId) => {
   const contact = await contactsCollection.findOneAndDelete({_id: contactId});
   return contact;
+}
+export const registerUser = async (payload) => {
+  return await UsersCollection.create(payload);
 }
