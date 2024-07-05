@@ -33,5 +33,9 @@ contactsShema.pre('findOneAndUpdate', function (next) {
     this.options.runValidators = true;
     next();
 });
+contactsShema.post('save', (error, data, next) => {
+    error.status = 400;
+    next()
+})
 
 export const contactsCollection = model('contacts', contactsShema);
