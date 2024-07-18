@@ -75,7 +75,7 @@ export const refreshController = async (req, res) => {
         }
     });
 };
-const logoutController = async (req, res) => {
+export const logoutController = async (req, res) => {
     const { sessionId } = req.cookies;
     if (!sessionId) {
         throw createHttpError(401, 'Session not found');
