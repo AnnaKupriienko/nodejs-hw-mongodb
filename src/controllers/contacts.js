@@ -6,9 +6,10 @@ import { contactFieldList } from '../constants/contact-constants.js';
 import {parseFilterParams} from '../utils/parseFilterParams.js';
 
 export const getContactsController = async (req, res) => {
+    const { _id: userId } = req.user;
     const { page, perPage } = parsePaginationParams(req.query);
     const { sortBy, sortOrder } = parseSortParams(req.query, contactFieldList);
-     const filter = parseFilterParams(req.query);
+    const filter = {...parseFilterParams(req.query), userId};
     const contacts = await getAllContacts({
         page,
         perPage,
@@ -24,6 +25,7 @@ export const getContactsController = async (req, res) => {
 
 export const getContactsByIdController = async (req, res, next) => {
     const { contactId } = req.params;
+    const { _id: userId } = req.user;
     const contact = await getContactById(contactId);
     if (!contact) {
         throw (createHttpError(404, 'Contact not found'));
@@ -35,7 +37,8 @@ export const getContactsByIdController = async (req, res, next) => {
     });
 };
 export const createContactController = async (req, res) => {
-    const contact = await createContact(req.body);
+    const { _id: userId } = req.user;
+    const contact = await createContact({...req.body, userId});
     res.status(201).json({
         status: 201,
         message: "Successfully created a contact!",

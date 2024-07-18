@@ -6,7 +6,10 @@ export const getAllContacts = async ({ filter,page, perPage,sortBy ="name", sort
   const skip = (page - 1) * perPage;
   const limit = perPage;
   const contactsQuery = contactsCollection.find();
-  if(filter.contactType){
+  if (filter.userId) {
+    contactsQuery.where("userId").equals(filter.userId);
+  }
+  if (filter.contactType) {
     contactsQuery.where("contactType").equals(filter.contactType);
   };
   if (filter.isFavourite !== undefined) {

@@ -1,4 +1,5 @@
-import {hashValue} from '../utils/hash.js';
+import { hashValue } from '../utils/hash.js';
+import { UsersCollection } from '../db/models/userModel.js';
 
 export const findUser = filter => UsersCollection.findOne(filter);
 

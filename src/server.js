@@ -5,7 +5,8 @@ import { env } from './utils/env.js';
 import contactsRouter from '../src/routers/contacts.js'
 import authRouter from '../src/routers/auth.js'
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
-import { errorHandler} from "./middlewares/errorHandler.js"
+import { errorHandler } from "./middlewares/errorHandler.js"
+import cookieParser from 'cookie-parser';
 
 const PORT = Number(env('PORT', '3000'));
 
@@ -31,6 +32,7 @@ const setupServer = () => {
     app.use(authRouter);
     app.use('*', notFoundHandler);
     app.use(errorHandler);
+    app.use(cookieParser());
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

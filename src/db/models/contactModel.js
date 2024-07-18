@@ -2,6 +2,7 @@ import { Schema, model } from 'mongoose';
 import { typeList } from '../../constants/contact-constants.js';
 
 const contactsShema = new Schema({
+
     name: {
         type: String,
         required: true,
@@ -22,6 +23,11 @@ const contactsShema = new Schema({
         enum: typeList,
         required: true,
         default: 'personal',
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'users',
+        required: true,
     },
 },
     {versionKey: false,
