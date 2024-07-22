@@ -28,9 +28,9 @@ const setupServer = () => {
         res.json({
             message: 'Hello World!',
         });
-    });
-    app.use(contactsRouter);
+      });
     app.use(authRouter);
+    app.use(contactsRouter);
     app.use('*', notFoundHandler);
     app.use(errorHandler);
 app.listen(PORT, () => {

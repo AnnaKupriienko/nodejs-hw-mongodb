@@ -21,4 +21,4 @@ export const createSession = async (userId) => {
     })
 };
 
-export const deleteSession = filter => Session.deleteOne(filter);
+export const deleteSession = filter => SessionsCollection.deleteOne(filter);
