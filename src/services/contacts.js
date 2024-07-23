@@ -30,7 +30,7 @@ export const getAllContacts = async ({ filter,page, perPage,sortBy ="name", sort
   };
 };
 export const getContactById = async (contactId) => {
-  const contact = await contactsCollection.findById(contactId);
+  const contact = await contactsCollection.findOne(contactId);
   return contact;
 };
 export const createContact = async (payload) => {

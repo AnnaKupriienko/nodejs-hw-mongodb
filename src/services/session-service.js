@@ -2,7 +2,7 @@ import { SessionsCollection} from "../db/models/sessionModal.js";
 import { randomBytes } from 'node:crypto';
 import { ACCESS_TOKEN_LIFETIME,REFRESH_TOKEN_LIFETIME } from "../constants/contact-constants.js";
 
-export const findSession = filter => {
+export const findSession = (filter) => {
    return SessionsCollection.findOne(filter);
 }
 
@@ -21,4 +21,4 @@ export const createSession = async (userId) => {
     })
 };
 
-export const deleteSession = filter => SessionsCollection.deleteOne(filter);
+export const deleteSession = (filter) => SessionsCollection.deleteOne(filter);
