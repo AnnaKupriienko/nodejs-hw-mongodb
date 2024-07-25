@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 import { typeList } from '../../constants/contact-constants.js';
 
 const contactsShema = new Schema({
-
+ photo: { type: String },
     name: {
         type: String,
         required: true,
