@@ -1,8 +1,8 @@
+import { env } from '../utils/env.js';
 import jwt from 'jsonwebtoken';
 import { hashValue } from '../utils/hash.js';
 import { UsersCollection } from '../db/models/userModel.js';
 import { SMTP,TEMPLATES_DIR } from '../constants/contact-constants.js';
-import { env } from '../utils/env.js';
 import { sendEmail } from '../utils/sendMail.js';
 import handlebars from 'handlebars';
 import path from 'node:path';
