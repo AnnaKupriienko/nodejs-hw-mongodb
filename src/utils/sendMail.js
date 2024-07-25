@@ -1,4 +1,4 @@
-import { env } from './env.js';
+import { env } from './env';
 import nodemailer from 'nodemailer';
 import { SMTP } from '../constants/contact-constants.js';
 
