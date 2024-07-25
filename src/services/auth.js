@@ -1,4 +1,4 @@
-import { env } from '../utils/env.js';
+import env from '../utils/env.js';
 import jwt from 'jsonwebtoken';
 import { hashValue } from '../utils/hash.js';
 import { UsersCollection } from '../db/models/userModel.js';

@@ -1,4 +1,4 @@
-import { env } from './utils/env.js';
+import env from './utils/env.js';
 import express from 'express';
 import cors from 'cors';
 import pino from 'pino-http';
