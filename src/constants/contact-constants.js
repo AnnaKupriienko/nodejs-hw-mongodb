@@ -23,9 +23,9 @@ export const SMTP = {
     SMTP_PASSWORD: 'SMTP_PASSWORD',
     SMTP_FROM: 'SMTP_FROM',
 };
-
-export const TEMP_UPLOAD_DIR = path.join(process.cwd(), 'src', 'temp');
-export const UPLOAD_DIR = path.join(process.cwd(), 'uploads');
+export const TEMP_UPLOAD_DIR = path.resolve('src', 'temp');
+export const PUBLIC_DIR = path.resolve('src', 'public');
+export const PUBLIC_PHOTOS_DIR = path.resolve('src', 'public', 'photos');
 export const CLOUDINARY = {
   CLOUD_NAME: 'CLOUD_NAME',
   API_KEY: 'API_KEY',

@@ -7,7 +7,7 @@ import authRouter from '../src/routers/auth.js'
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from "./middlewares/errorHandler.js"
 import cookieParser from 'cookie-parser';
-import { UPLOAD_DIR } from './constants/contact-constants.js';
+import { PUBLIC_DIR } from './constants/contact-constants.js';
 
 const PORT = Number(env('PORT', '3000'));
 
@@ -17,11 +17,10 @@ const setupServer = () => {
     app.use(express.json());
     app.use(cors());
     app.use(cookieParser());
-    app.use('/uploads', express.static(UPLOAD_DIR));
     app.use(
         pino({
             transport: {
-                target: 'pino-pretty',
+            target: 'pino-pretty',
             },
         }),
     );
@@ -30,6 +29,7 @@ const setupServer = () => {
             message: 'Hello World!',
         });
       });
+    app.use(express.static(PUBLIC_DIR));
     app.use(authRouter);
     app.use(contactsRouter);
     app.use('*', notFoundHandler);
