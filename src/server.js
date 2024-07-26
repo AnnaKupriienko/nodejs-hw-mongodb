@@ -8,6 +8,7 @@ import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from "./middlewares/errorHandler.js"
 import cookieParser from 'cookie-parser';
 import { PUBLIC_DIR } from './constants/contact-constants.js';
+import { swaggerDocs } from './middlewares/swaggerDocs.js';
 
 const PORT = Number(env('PORT', '3000'));
 
@@ -30,6 +31,7 @@ const setupServer = () => {
         });
       });
     app.use(express.static(PUBLIC_DIR));
+    app.use('/api-docs', swaggerDocs());
     app.use(authRouter);
     app.use(contactsRouter);
     app.use('*', notFoundHandler);
